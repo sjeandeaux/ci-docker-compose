@@ -17,3 +17,8 @@ jenkins:
     - "8080:8080"
     - "5000:5000"
 
+dockerRegistry:
+   image: "registry:2"
+   ports:
+    - "5001:5000"
+
