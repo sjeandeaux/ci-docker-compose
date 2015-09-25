@@ -6,4 +6,4 @@
 
 == Docker Registry
 
-
+== Swagger

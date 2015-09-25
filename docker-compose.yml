@@ -1,18 +1,18 @@
 dataNexus:
-  image: sonatype/nexus
+  image: "sonatype/nexus"
   command: "tail -f /dev/null"
   volumes:
     - "/sonatype-work"
 
 nexus:
-  image: sonatype/nexus
+  image: "sonatype/nexus"
   ports: 
     - "8081:8081"
   volumes_from:
-    - dataNexus
+    - "dataNexus"
 
 jenkins:
-  build: jenkins
+  build: "jenkins"
   ports: 
     - "8080:8080"
     - "5000:5000"
@@ -21,4 +21,9 @@ dockerRegistry:
    image: "registry:2"
    ports:
     - "5001:5000"
+
+swagger:
+   image: "sjeandeaux/docker-swagger-ui"
+   ports:
+    - "8888:8888"
 
