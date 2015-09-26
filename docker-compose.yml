@@ -1,15 +1,14 @@
-dataNexus:
-  image: "sonatype/nexus"
-  command: "tail -f /dev/null"
+data:
+  build: "data"
   volumes:
-    - "/sonatype-work"
+   - "/sonatype-work"
 
 nexus:
   image: "sonatype/nexus"
   ports: 
     - "8081:8081"
   volumes_from:
-    - "dataNexus"
+    - "data"
 
 jenkins:
   build: "jenkins"
