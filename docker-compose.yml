@@ -2,6 +2,7 @@ data:
   build: "data"
   volumes:
    - "/sonatype-work"
+   - "/var/jenkins_home"
 
 nexus:
   image: "sonatype/nexus"
@@ -12,14 +13,18 @@ nexus:
 
 jenkins:
   build: "jenkins"
+  environment:
+    JAVA_OPTS: "-Djava.awt.headless=true"
   ports: 
     - "8080:8080"
-    - "5000:5000"
+    - "50000:50000"
+  volumes_from:
+    - "data"
 
 dockerRegistry:
    image: "registry:2"
    ports:
-    - "5001:5000"
+    - "5000:5000"
 
 swagger:
    image: "sjeandeaux/docker-swagger-ui"
