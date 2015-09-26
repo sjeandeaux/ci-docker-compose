@@ -6,6 +6,8 @@ rm:
 	docker-compose rm
 stop:
 	docker-compose stop
+rmi:
+	docker images | grep "^cidocker" | awk '{print $$3}'| xargs docker rmi -f
 
 data-rmi:
 	docker rmi cidockercompose_data
