@@ -28,11 +28,11 @@ dockerRegistry:
    image: "registry:2"
    ports:
     - "5000:5000"
-  restart: always
+   restart: always
 
 swagger:
    image: "sjeandeaux/docker-swagger-ui"
    ports:
     - "8888:8888"
-  restart: always
+   restart: always
 
