@@ -4,6 +4,10 @@
 
 == Jenkins
 
+== Sonar
+
+== Postgresql
+
 == Docker Registry
 
 == Swagger
