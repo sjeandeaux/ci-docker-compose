@@ -25,6 +25,13 @@ jenkins:
     - "data"
   restart: always
 
+sonarqube:
+  build: "sonarqube"
+  ports:
+   - "9000:9000"
+   - "9092:9092"
+  restart: always
+
 registry:
    build: "registry"
    ports:
