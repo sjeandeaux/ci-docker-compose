@@ -21,3 +21,9 @@
 * TODO create documentation JSON (swagger) NEXUS
 * TODO create documentation JSON (swagger) JENKINS
 * TODO create documentation JSON (swagger) REGISTRY
+
+== Data
+
+* TODO data nexus
+* TODO data jenkins
+* TODO data registry
