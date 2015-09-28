@@ -2,7 +2,13 @@
 
 == Nexus
 
+* TODO add task to run yum
+
 == Jenkins
+
+* TODO create link with nexus
+* TODO create link with sonar
+* TODO create link with registry
 
 == Sonar
 
@@ -11,3 +17,7 @@
 == Docker Registry
 
 == Swagger
+
+* TODO create documentation JSON (swagger) NEXUS
+* TODO create documentation JSON (swagger) JENKINS
+* TODO create documentation JSON (swagger) REGISTRY
