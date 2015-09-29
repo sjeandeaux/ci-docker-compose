@@ -1,8 +1,17 @@
-data:
+dataNexus:
   build: "data"
   volumes:
    - "/sonatype-work"
+  restart: always
+
+dataJenkins:
+  build: "data"
+  volumes:
    - "/var/jenkins_home"
+  restart: always
+
+dataRegistry:
+  build: "data"
    - "/tmp/registry"
   restart: always
 
@@ -11,7 +20,7 @@ nexus:
   ports: 
     - "8081:8081"
   volumes_from:
-    - "data"
+    - "dataNexus"
   restart: always
 
 jenkins:
@@ -22,7 +31,7 @@ jenkins:
     - "8080:8080"
     - "50000:50000"
   volumes_from:
-    - "data"
+    - "dataJenkins"
   restart: always
 
 sonarqube:
@@ -48,7 +57,7 @@ registry:
    ports:
     - "5000:5000"
    volumes_from:
-    - "data"
+    - "dataRegistry"
    restart: always
 
 swagger:
