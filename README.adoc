@@ -2,43 +2,35 @@
 
 == Stack
 
+=== Required:
+
 * docker
 * docker-machine
 * docker-compose
 
-== HaProxy
+=== Optional:
 
-`open http://$(docker-machine ip ci-docker-compose):8666/haproxy?stats`
+* Make
 
+== Services
 
-TODO add prefix on all service
-TODO proxy on
-
-== Nexus
-
-* TODO add task to run yum
-* TODO add proxy on repository with curl/python/go???
-
-== Jenkins
-
-* TODO create link with nexus
-* TODO create link with sonar
-* TODO create link with registry
-
-== Sonar
-
-== Postgresql
-
-== Docker Registry
-
-== Swagger
-
-* TODO create documentation JSON (swagger) NEXUS
-* TODO create documentation JSON (swagger) JENKINS
-* TODO create documentation JSON (swagger) REGISTRY
+* HaProxy
+* Nexus
+* Jenkins
+* Sonar
+* Swagger
+* Docker registry
 
 == Data
 
-* Container dataNexus
-* Container dataJenkins
-* Container dataRegistry
+* Container datanexus
+* Container datajenkins
+* Container dataregistry
+
+== TODO
+
+- [ ] add task to run yum
+- [ ] add proxy on repository with curl/python/go???
+- [ ] create documentation JSON (swagger) NEXUS
+- [ ] create documentation JSON (swagger) JENKINS
+- [ ] create documentation JSON (swagger) REGISTRY

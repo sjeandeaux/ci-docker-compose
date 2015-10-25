@@ -17,4 +17,5 @@ stop:
 	@docker-compose stop
 rmi:
 	@docker images | grep "^cidocker" | awk '{print $$3}'| xargs docker rmi -f
-
+stats:
+	@open http://$(shell docker-machine ip ci-docker-compose):8666/haproxy?stats
