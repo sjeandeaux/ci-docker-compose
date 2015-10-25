@@ -66,3 +66,15 @@ swagger:
    ports:
     - "8888:8888"
    restart: always
+
+haproxy:
+   build: "haproxy"
+   ports:
+    - "80:80"
+    - "8666:8666"
+   links:
+    - "jenkins:jenkins"
+    - "nexus:nexus"
+    - "sonarqube:sonarqube"
+    - "swagger:swagger"
+      

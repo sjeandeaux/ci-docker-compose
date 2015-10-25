@@ -10,7 +10,9 @@ up:
 ps:
 	@docker-compose ps
 rm:
-	@docker-compose rm
+	@docker-compose rm -f
+kill:
+	@docker-compose kill
 stop:
 	@docker-compose stop
 rmi:

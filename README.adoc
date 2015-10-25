@@ -1,10 +1,23 @@
 = Continuous Integration
 
-== TODO NGINX
+== Stack
+
+* docker
+* docker-machine
+* docker-compose
+
+== HaProxy
+
+`open http://$(docker-machine ip ci-docker-compose):8666/haproxy?stats`
+
+
+TODO add prefix on all service
+TODO proxy on
 
 == Nexus
 
 * TODO add task to run yum
+* TODO add proxy on repository with curl/python/go???
 
 == Jenkins
 
