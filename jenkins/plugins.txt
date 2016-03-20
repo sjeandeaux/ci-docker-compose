@@ -11,3 +11,4 @@ ssh-credentials:1.11
 parameterized-trigger:2.29
 git:2.4.0
 sbt:1.5
+build-name-setter:1.5.1
