@@ -1,2 +1,2 @@
-FROM sonatype/nexus
-ENV CONTEXT_PATH /nexus
+FROM sonatype/nexus3
+ENV NEXUS_CONTEXT nexus
