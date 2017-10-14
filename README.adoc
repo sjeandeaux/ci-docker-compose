@@ -5,7 +5,6 @@
 === Required:
 
 * docker
-* docker-machine
 * docker-compose
 
 == Services
