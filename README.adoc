@@ -8,10 +8,6 @@
 * docker-machine
 * docker-compose
 
-=== Optional:
-
-* Make
-
 == Services
 
 * HaProxy
