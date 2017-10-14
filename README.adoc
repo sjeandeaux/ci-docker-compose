@@ -26,11 +26,3 @@
 * Container datanexus
 * Container datajenkins
 * Container dataregistry
-
-== TODO
-
-- [ ] add task to run yum
-- [ ] add proxy on repository with curl/python/go???
-- [ ] create documentation JSON (swagger) NEXUS
-- [ ] create documentation JSON (swagger) JENKINS
-- [ ] create documentation JSON (swagger) REGISTRY
