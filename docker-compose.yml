@@ -1,80 +1,73 @@
-datanexus:
-  build: "data"
-  volumes:
-   - "/sonatype-work"
-  restart: always
+version: '2'
+services:
+  datanexus:
+    build: "data"
+    volumes:
+     - "/sonatype-work"
+    restart: always
+  datajenkins:
+    build: "data"
+    volumes:
+     - "/var/jenkins_home"
+    restart: always
+  dataregistry:
+    build: "data"
+    volumes:
+     - "/tmp/registry"
+    restart: always
+  nexus:
+    build: "nexus"
+    ports:
+      - "8081"
+    volumes_from:
+      - "datanexus"
+    restart: always
 
-datajenkins:
-  build: "data"
-  volumes:
-   - "/var/jenkins_home"
-  restart: always
+  jenkins:
+    build: "jenkins"
+    ports:
+      - "8080"
+      - "50000"
+    volumes_from:
+      - "datajenkins"
+    restart: always
+  sonarqube:
+    build: "sonarqube"
+    ports:
+     - "9000"
+     - "5432"
+    environment:
+     - SONARQUBE_JDBC_URL:"jdbc:postgresql://localhost:5432/sonar"
+     - SONARQUBE_JDBC_USERNAME:"ci"
+     - SONARQUBE_JDBC_PASSWORD:"ci-pass"
+    restart: always
 
-dataregistry:
-  build: "data"
-  volumes:
-   - "/tmp/registry"
-  restart: always
+  sonarqubedb:
+    image: postgres
+    environment:
+     - POSTGRES_USER:"ci"
+     - POSTGRES_PASSWORD:"ci-pass"
+  registry:
+     build: "registry"
+     ports:
+      - "5000"
+     volumes_from:
+      - "dataregistry"
+     restart: always
 
-nexus:
-  build: "nexus"
-  ports: 
-    - "8081:8081"
-  volumes_from:
-    - "datanexus"
-  restart: always
+  swagger:
+     image: "sjeandeaux/docker-swagger-ui"
+     ports:
+      - "8888"
+     restart: always
 
-jenkins:
-  build: "jenkins"
-  environment:
-    JAVA_OPTS: "-Djava.awt.headless=true"
-  ports: 
-    - "8080:8080"
-    - "50000:50000"
-  volumes_from:
-    - "datajenkins"
-  restart: always
-
-sonarqube:
-  build: "sonarqube"
-  ports:
-   - "9000:9000"
-   - "5432:5432"
-  environment:
-   - SONARQUBE_JDBC_URL:"jdbc:postgresql://localhost:5432/sonar"
-   - SONARQUBE_JDBC_USERNAME:"ci"
-   - SONARQUBE_JDBC_PASSWORD:"ci-pass"
-  restart: always
-
-sonarqubedb:
-  image: postgres
-  net: "container:sonarqube"
-  environment:
-   - POSTGRES_USER:"ci"
-   - POSTGRES_PASSWORD:"ci-pass"
-
-registry:
-   build: "registry"
-   ports:
-    - "5000:5000"
-   volumes_from:
-    - "dataregistry"
-   restart: always
-
-swagger:
-   image: "sjeandeaux/docker-swagger-ui"
-   ports:
-    - "8888:8888"
-   restart: always
-
-haproxy:
-   build: "haproxy"
-   ports:
-    - "80:80"
-    - "8666:8666"
-   links:
-    - "jenkins:jenkins"
-    - "nexus:nexus"
-    - "sonarqube:sonarqube"
-    - "swagger:swagger"
-      
+  haproxy:
+     build: "haproxy"
+     ports:
+      - "80:80"
+      - "8666:8666"
+     links:
+      - "jenkins:jenkins"
+      - "nexus:nexus"
+      - "sonarqube:sonarqube"
+      - "swagger:swagger"
