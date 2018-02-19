@@ -1,6 +1,5 @@
 FROM jenkins/jenkins:2.82-alpine
 
-ENV NEXUS_USER=admin NEXUS_PASSWORD=admin123
 ENV JENKINS_USER=oncle JENKINS_PASSWORD=bens
 
 COPY config/*.override /usr/share/jenkins/ref/
