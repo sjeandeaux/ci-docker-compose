@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.82-alpine
+FROM jenkins/jenkins:2.138.1-slim
 
 ENV JENKINS_USER=oncle JENKINS_PASSWORD=bens
 

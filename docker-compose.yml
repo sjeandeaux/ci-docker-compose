@@ -31,6 +31,8 @@ services:
     volumes_from:
       - "datajenkins"
     restart: always
+    links:
+      - "ldap:ldap"
   sonarqube:
     build: "sonarqube"
     ports:
@@ -61,8 +63,10 @@ services:
       - "8888"
      restart: always
   ldap:
-     build: "ldpa"
+     build: "ldap"
      restart: always
+     ports:
+      - "389"
 
   haproxy:
      build: "haproxy"
