@@ -60,6 +60,9 @@ services:
      ports:
       - "8888"
      restart: always
+  ldap:
+     build: "ldpa"
+     restart: always
 
   haproxy:
      build: "haproxy"
